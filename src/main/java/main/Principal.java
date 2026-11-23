@@ -8,9 +8,10 @@ package main;
  *
  * @author sofia
  */
-public class Tarea4MinilibroInteractivo {
+public class Principal {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+       Controlador controlador = new Controlador();
+       controlador.iniciar();
     }
 }
