@@ -16,8 +16,7 @@ public class PaginaActividad extends Pagina {
 
     @Override
     public String mostrarContenido() {
-        return "Actividad - Página " + getNumeroPagina() + ": " + getTitulo()
-                + "\n\n" + getContenido()
+        return "Actividad - Página " + getNumeroPagina() + ": " + getTitulo() + "\n\n" + getContenido()
                 + "\n\nElige una opción y dale a RESPONDER.";
     }
     

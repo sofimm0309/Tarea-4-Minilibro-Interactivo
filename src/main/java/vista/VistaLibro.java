@@ -4,12 +4,14 @@
  */
 package vista;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author sofia
  */
 public class VistaLibro extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaLibro.class.getName());
 
     /**
@@ -17,6 +19,38 @@ public class VistaLibro extends javax.swing.JFrame {
      */
     public VistaLibro() {
         initComponents();
+    }
+
+    public void addButtonListener(ActionListener listener) {
+        btnMenu.setActionCommand("MENU");
+        btnAnterior.setActionCommand("Anterior");
+        btnIniciar.setActionCommand("Iniciar lectura");
+        btnSiguiente.setActionCommand("Siguiente");
+        btnResponder.setActionCommand("Responder");
+        btnResultados.setActionCommand("Resultados");
+        btnSalir.setActionCommand("SALIR");
+
+        btnMenu.addActionListener(listener);
+        btnAnterior.addActionListener(listener);
+        btnIniciar.addActionListener(listener);
+        btnSiguiente.addActionListener(listener);
+        btnResponder.addActionListener(listener);
+        btnResultados.addActionListener(listener);
+        btnSalir.addActionListener(listener);
+
+    }
+
+    public void mostrarTexto(String texto) {
+        txtContenido.setText(texto);
+    }
+
+    public void habilitarBotones(boolean menu, boolean anterior, boolean iniciar, boolean siguiente, boolean responder, boolean resultados) {
+        btnMenu.setEnabled(menu);
+        btnAnterior.setEnabled(anterior);
+        btnIniciar.setEnabled(iniciar);
+        btnSiguiente.setEnabled(siguiente);
+        btnResponder.setEnabled(responder);
+        btnResultados.setEnabled(resultados);
     }
 
     /**
@@ -28,52 +62,65 @@ public class VistaLibro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        lblBiodiverCR = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtContenido = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
+        btnMenu = new javax.swing.JButton();
+        btnAnterior = new javax.swing.JButton();
+        btnIniciar = new javax.swing.JButton();
+        btnSiguiente = new javax.swing.JButton();
+        btnResponder = new javax.swing.JButton();
+        btnResultados = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Biodiversidad del Pacifico Costarricense");
+        lblBiodiverCR.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblBiodiverCR.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBiodiverCR.setText("BiodiverCR");
+        getContentPane().add(lblBiodiverCR, java.awt.BorderLayout.PAGE_START);
 
-        jButton1.setText("Siguiente");
+        txtContenido.setEditable(false);
+        txtContenido.setColumns(20);
+        txtContenido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtContenido.setLineWrap(true);
+        txtContenido.setRows(5);
+        txtContenido.setWrapStyleWord(true);
+        jScrollPane1.setViewportView(txtContenido);
 
-        jButton2.setText("Siguiente");
-        jButton2.addActionListener(this::jButton2ActionPerformed);
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(jLabel1)
-                .addContainerGap(104, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addGap(50, 50, 50))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 249, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap())
-        );
+        btnMenu.setText("MENU");
+        jPanel1.add(btnMenu);
+
+        btnAnterior.setText("Anterior");
+        btnAnterior.addActionListener(this::btnAnteriorActionPerformed);
+        jPanel1.add(btnAnterior);
+
+        btnIniciar.setText("Iniciar lectura");
+        jPanel1.add(btnIniciar);
+
+        btnSiguiente.setText("Siguiente");
+        jPanel1.add(btnSiguiente);
+
+        btnResponder.setText("Responder");
+        jPanel1.add(btnResponder);
+
+        btnResultados.setText("Resultados");
+        jPanel1.add(btnResultados);
+
+        btnSalir.setText("SALIR");
+        jPanel1.add(btnSalir);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAnteriorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -101,8 +148,16 @@ public class VistaLibro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnAnterior;
+    private javax.swing.JButton btnIniciar;
+    private javax.swing.JButton btnMenu;
+    private javax.swing.JButton btnResponder;
+    private javax.swing.JButton btnResultados;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnSiguiente;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblBiodiverCR;
+    private javax.swing.JTextArea txtContenido;
     // End of variables declaration//GEN-END:variables
 }
