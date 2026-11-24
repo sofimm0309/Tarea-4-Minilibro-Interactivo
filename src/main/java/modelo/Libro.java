@@ -75,6 +75,12 @@ public class Libro {
         if (respuestas.length != 3) {
             throw new IllegalArgumentException("Debe responder las 3 preguntas.");
         }
+        //respuesta invalida
+        for (int i = 0; i < respuestas.length; i++) {
+            if (respuestas[i] < 0 || respuestas[i] > 2) {
+                throw new IllegalArgumentException("Ups, elige una de las tres opciones.");
+            }
+        }
         int puntos = 0;
         for (int i = 0; i < respuestas.length; i++) {
             registro[intentos][i] = respuestas[i];
@@ -87,6 +93,17 @@ public class Libro {
         intentos++;
         return puntos;
 
+    }
+
+    public String obtenerIntento(int numero) {
+        if (numero < 0 || numero >= intentos) {
+            throw new IndexOutOfBoundsException("Ups, ese intento todavia no existe");
+        }
+        String texto = "Intento " + (numero + 1) + ": ";
+        for (int i = 0; i < 3; i++) {
+            texto += (registro[numero][i] + 1) + " ";
+        }
+        return texto;
     }
 
     public String mostrarHistorial() {
